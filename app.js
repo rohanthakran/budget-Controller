@@ -182,7 +182,7 @@ var UIController = (function(){
 
 };
 
-  var nodedListFforEaach = function(list, callback){
+  var nodedListFforEach = function(list, callback){
 
     for(var i =0;i <list.length; i++){
       callback(list[i], i);
@@ -268,7 +268,7 @@ var UIController = (function(){
         var fields = document.querySelectorAll(DOMstrings.expensePerc); 
 
       
-        nodedListFforEaach(fields, function(current, index){
+        nodedListFforEach(fields, function(current, index){
 
           if(percentage[index] > 0){
 
@@ -293,6 +293,18 @@ var UIController = (function(){
 
     },
 
+    changeType : function(){
+           
+       var fields = document.querySelectorAll(DOMstrings.inputType + ','+DOMstrings.inputDescription+','+DOMstrings.inputValue);
+      
+       nodedListFforEach(fields, function(cur){
+         cur.classList.toggle('red-focus');
+       });
+
+       document.querySelector(DOMstrings.inputBtn).classList.toggle('red');
+    
+    },
+
     
     getDOmStrings : function(){
       return DOMstrings;
@@ -313,8 +325,8 @@ var controller = (function(budgetCntrl, UiCtrl){
                     CtrlAddItem();
         });
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
-
-    
+        document.querySelector(DOM.inputType).addEventListener('change', UiCtrl.changeType)
+     
   };
   var updateBudget = function(){
     //1. Calculate the 
