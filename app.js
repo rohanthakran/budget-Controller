@@ -83,6 +83,7 @@ var budgetController = (function(){
                     return current.id;          
               });
 
+              
               index = ids.indexOf(id);
 
               if(index !== -1){
